@@ -80,6 +80,24 @@ public class ValidParentheses {
         return index == 0;
     }
 
+    public static boolean isValid3(String s) {
+        int index = 0;
+        char[] stack = new char[s.length() / 2 + 1];
+
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '[' -> stack[index++] = ']';
+                case '{' -> stack[index++] = '}';
+                case '(' -> stack[index++] = ')';
+                default -> {
+                    if (index == 0 || stack[--index] != c) return false;
+                }
+            }
+        }
+
+        return index == 0;
+    }
+
     public static boolean isValidTheBest(String s) {
         Deque<Character> stack = new ArrayDeque<>();
 
